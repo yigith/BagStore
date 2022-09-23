@@ -21,6 +21,7 @@ Install-Package Ardalis.Specification
 Install-Package Microsoft.EntityFrameworkCore
 Install-Package Microsoft.AspNetCore.Identity.EntityFrameworkCore
 Install-Package Npgsql.EntityFrameworkCore.PostgreSQL
+Install-Package Ardalis.Specification.EntityFrameworkCore
 
 /Web
 Install-Package Npgsql.EntityFrameworkCore.PostgreSQL
@@ -36,3 +37,7 @@ Update-Database -Context AppIdentityDbContext
 Add-Migration BagStoreInitialCreate -Context BagStoreContext -OutputDir "Data\Migrations"
 Update-Database -Context BagStoreContext 
 ```
+
+## Useful Links
+
+* https://github.com/dotnet-architecture/eShopOnWeb
