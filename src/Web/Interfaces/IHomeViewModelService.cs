@@ -2,6 +2,6 @@
 {
     public interface IHomeViewModelService
     {
-        Task<HomeViewModel> GetHomeViewModel(int? categoryId, int? brandId);
+        Task<HomeViewModel> GetHomeViewModel(int? categoryId, int? brandId, int pageId);
     }
 }
