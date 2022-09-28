@@ -18,7 +18,7 @@ namespace Web.Controllers
         public async Task<IActionResult> Index(int? categoryId, int? brandId, int pageId = 1)
         {
             if (pageId < 1) pageId = 1;
-            var vm = await _homeViewModelService.GetHomeViewModel(categoryId, brandId, pageId);
+            var vm = await _homeViewModelService.GetHomeViewModelAsync(categoryId, brandId, pageId);
             return View(vm);
         }
 

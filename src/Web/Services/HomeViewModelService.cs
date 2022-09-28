@@ -16,7 +16,7 @@ namespace Web.Services
             _brandRepo = brandRepo;
         }
 
-        public async Task<HomeViewModel> GetHomeViewModel(int? categoryId, int? brandId, int pageId)
+        public async Task<HomeViewModel> GetHomeViewModelAsync(int? categoryId, int? brandId, int pageId)
         {
             var ipp = Constants.ITEMS_PER_PAGE;
             var specFilter = new ProductsFilterSpecification(categoryId, brandId);
