@@ -3,10 +3,10 @@ global using Web.Models;
 global using Web.Interfaces;
 global using ApplicationCore.Interfaces;
 global using ApplicationCore.Entities;
+global using Web.Extensions;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Web.Extensions;
 using Web.Services;
 using ApplicationCore.Services;
 

@@ -49,7 +49,7 @@
                     @item.Price.ToString("c2")
                 </div>
                 <div>
-                    <a href="#" class="btn btn-success">
+                    <a href="#" class="btn btn-success" data-add-to-basket="@item.Id">
                         <i class="fa-solid fa-cart-plus"></i>
                     </a>
                 </div>
@@ -97,3 +97,17 @@
         Showing @pi.RangeStart-@pi.RangeEnd of @pi.TotalItems products
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $("[data-add-to-basket]").click(function (e) {
+            e.preventDefault();
+            var productId = $(this).data("add-to-basket");
+
+            $.post("@Url.Action("AddItemToBasket", "Basket")", { productId }, function (data) {
+                $("[data-basket-item-count]").text(data.totalItems);
+                showSuccessMessage("Item added to basket.");
+            });
+        });
+    </script>
+}

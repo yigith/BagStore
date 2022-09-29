@@ -6,12 +6,10 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IHomeViewModelService _homeViewModelService;
 
-        public HomeController(ILogger<HomeController> logger, IHomeViewModelService homeViewModelService)
+        public HomeController(IHomeViewModelService homeViewModelService)
         {
-            _logger = logger;
             _homeViewModelService = homeViewModelService;
         }
 
