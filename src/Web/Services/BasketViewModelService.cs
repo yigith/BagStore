@@ -54,5 +54,11 @@ namespace Web.Services
                 }).ToList()
             };
         }
+
+        public async Task<BasketViewModel> GetBasketViewModelAsync()
+        {
+            var basket = await _basketService.GetOrCreateBasketAsync(BuyerId);
+            return null;
+        }
     }
 }

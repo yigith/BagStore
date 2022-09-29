@@ -17,15 +17,7 @@ namespace ApplicationCore.Services
 
         public async Task<Basket> AddItemToBasketAsync(string buyerId, int productId, int quantity)
         {
-            var specBasket = new BasketWithItemsSpecification(buyerId);
-            var basket = await _basketRepo.FirstOrDefaultAsync(specBasket);
-
-            if (basket == null)
-            {
-                basket = new Basket() { BuyerId = buyerId };
-                await _basketRepo.AddAsync(basket);
-            }
-
+            var basket = await GetOrCreateBasketAsync(buyerId);
             var basketItem = basket.Items.FirstOrDefault(x => x.ProductId == productId);
 
             if (basketItem == null)
@@ -43,6 +35,20 @@ namespace ApplicationCore.Services
                 basketItem.Quantity += quantity;
             }
             await _basketRepo.UpdateAsync(basket);
+
+            return basket;
+        }
+
+        public async Task<Basket> GetOrCreateBasketAsync(string buyerId)
+        {
+            var specBasket = new BasketWithItemsSpecification(buyerId);
+            var basket = await _basketRepo.FirstOrDefaultAsync(specBasket);
+
+            if (basket == null)
+            {
+                basket = new Basket() { BuyerId = buyerId };
+                await _basketRepo.AddAsync(basket);
+            }
 
             return basket;
         }
