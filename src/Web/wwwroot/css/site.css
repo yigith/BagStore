@@ -12,3 +12,7 @@ body {
     height: 3rem;
     overflow: hidden;
 }
+
+.number-input > .quantity {
+    width: 70px;
+}
