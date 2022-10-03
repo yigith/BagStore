@@ -88,5 +88,37 @@ namespace ApplicationCore.Services
 
             return basket;
         }
+
+        public async Task TransferBasketAsync(string sourceBuyerId, string destinationBuyerId)
+        {
+            var specSourceBasket = new BasketWithItemsSpecification(sourceBuyerId);
+            var sourceBasket = await _basketRepo.FirstOrDefaultAsync(specSourceBasket);
+            
+            if (destinationBuyerId == null || sourceBuyerId == null || sourceBasket == null)
+                return;
+
+            var destinationBasket = await GetOrCreateBasketAsync(destinationBuyerId);
+
+            foreach (var item in sourceBasket.Items)
+            {
+                var targetItem = destinationBasket.Items.FirstOrDefault(x => x.ProductId == item.ProductId);
+
+                if (targetItem != null)
+                {
+                    targetItem.Quantity += item.Quantity;
+                }
+                else
+                {
+                    destinationBasket.Items.Add(new BasketItem()
+                    {
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity
+                    });
+                }
+            }
+
+            await _basketRepo.UpdateAsync(destinationBasket);
+            await _basketRepo.DeleteAsync(sourceBasket);
+        }
     }
 }

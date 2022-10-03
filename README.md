@@ -46,3 +46,4 @@ Update-Database -Context BagStoreContext
 * https://sweetalert2.github.io
 * https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-6.0#dictionaries-1
 * https://github.com/dotnet/aspnetcore/issues/16663
+* https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-6.0

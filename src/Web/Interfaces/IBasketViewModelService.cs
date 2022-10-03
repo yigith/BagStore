@@ -11,5 +11,7 @@
         Task RemoveBasketItemAsync(int productId);
 
         Task<BasketViewModel> UpdateBasketAsync(Dictionary<int, int> quantities);
+
+        Task TransferBasketAsync();
     }
 }
