@@ -47,3 +47,5 @@ Update-Database -Context BagStoreContext
 * https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-6.0#dictionaries-1
 * https://github.com/dotnet/aspnetcore/issues/16663
 * https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/write?view=aspnetcore-6.0
+* https://getbootstrap.com/docs/5.2/examples/checkout/
+* https://stackoverflow.com/questions/69961449/net6-and-datetime-problem-cannot-write-datetime-with-kind-utc-to-postgresql-ty

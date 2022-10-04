@@ -13,5 +13,7 @@
         Task<BasketViewModel> UpdateBasketAsync(Dictionary<int, int> quantities);
 
         Task TransferBasketAsync();
+
+        Task CompleteCheckoutAsync(string street, string city, string state, string country, string zipCode);
     }
 }
