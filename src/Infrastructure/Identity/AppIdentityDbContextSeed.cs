@@ -6,8 +6,10 @@ namespace Infrastructure.Identity
 {
     public static class AppIdentityDbContextSeed
     {
-        public static async Task SeedAsync(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public static async Task SeedAsync(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, AppIdentityDbContext db)
         {
+            await db.Database.MigrateAsync();
+
             if (!await roleManager.RoleExistsAsync(Authorization.Roles.ADMINISTRATOR))
             {
                 await roleManager.CreateAsync(new IdentityRole(Authorization.Roles.ADMINISTRATOR));

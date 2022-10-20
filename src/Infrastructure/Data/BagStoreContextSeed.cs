@@ -7,6 +7,8 @@ namespace Infrastructure.Data
     {
         public static async Task SeedAsync(BagStoreContext db)
         {
+            await db.Database.MigrateAsync();
+
             if (await db.Categories.AnyAsync() || await db.Brands.AnyAsync() || await db.Products.AnyAsync())
                 return;
 

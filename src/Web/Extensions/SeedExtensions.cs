@@ -10,10 +10,11 @@ namespace Web.Extensions
             using (var scope = app.Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<BagStoreContext>();
+                var dbIdentity = scope.ServiceProvider.GetRequiredService<AppIdentityDbContext>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 await BagStoreContextSeed.SeedAsync(db);
-                await AppIdentityDbContextSeed.SeedAsync(roleManager, userManager);
+                await AppIdentityDbContextSeed.SeedAsync(roleManager, userManager, dbIdentity);
             }
         }
     }
